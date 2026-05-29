@@ -47,4 +47,11 @@ async function shutdown() {
 process.on('SIGINT', shutdown);
 process.on('SIGTERM', shutdown);
 
+// ดึงค่า PORT จาก Render ถ้าไม่ได้รันบน Render ให้ใช้ 3000 แทน
+const PORT = process.env.PORT || 3000; 
+
+app.listen(PORT, () => {
+    console.log(`✅ Server is running on port ${PORT}`);
+});
+
 start();
